@@ -1,6 +1,6 @@
 import { Router } from 'express'
 import { checkDuplicateUsernameOrEmail, validate, verifyToken } from '../middlewares/index'
-import { registerRules } from '../validations/auth'
+import { registerRules } from '../validations/validations'
 
 const router = Router()
 

@@ -6,6 +6,8 @@ const app = express()
 // API routes:
 import indexRoute from './routes/index'
 import authRouter from './routes/auth'
+import categorieRouter from './routes/categorie'
+import tagRouter from './routes/tag'
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -14,5 +16,7 @@ app.use(cors())
 
 app.use(indexRoute)
 app.use(authRouter)
+app.use(categorieRouter)
+app.use(tagRouter)
 
 export default app

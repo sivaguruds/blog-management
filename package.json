@@ -10,7 +10,8 @@
         "dev": "tsc && nodemon",
         "start": "node dist/server.js",
         "lint": "eslint --ext .js,.ts .",
-        "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\""
+        "format": "prettier --ignore-path .gitignore --write \"**/*.+(js|ts|json)\"",
+        "migrate": "npx sequelize-cli db:migrate"
     },
     "author": "",
     "license": "ISC",

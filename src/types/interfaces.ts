@@ -9,3 +9,14 @@ export interface User {
     password: string
     isVerify: boolean
 }
+export interface Categorie {
+    id?: string
+    title: string
+    content: string
+}
+
+export interface Tag {
+    id?: string
+    title: string
+    content: string
+}

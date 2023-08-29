@@ -13,3 +13,13 @@ export const registerRules = [
         .isIn(['Male', 'Female', 'Other'])
         .withMessage('Gender value is invalid'),
 ]
+
+export const categorieRules = [
+    body('title').not().isEmpty().withMessage('Title can not be empty!'),
+    body('content').not().isEmpty().withMessage('content can not be empty!'),
+]
+
+export const tagRules = [
+    body('title').not().isEmpty().withMessage('Title can not be empty!'),
+    body('content').not().isEmpty().withMessage('content can not be empty!'),
+]
