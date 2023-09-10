@@ -1,16 +1,15 @@
 import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes } from 'sequelize'
 import { sequelize } from '../connection'
-import post from './post'
 
-export class categorie extends Model<InferAttributes<categorie>, InferCreationAttributes<categorie>> {
+export class tag_categorie extends Model<InferAttributes<tag_categorie>, InferCreationAttributes<tag_categorie>> {
     declare id?: CreationOptional<string>
-    declare title: string
-    declare content: string
+    declare postId: string
+    declare categorieId: string
     declare createdAt: CreationOptional<Date>
     declare updatedAt: CreationOptional<Date>
 }
 
-categorie.init(
+tag_categorie.init(
     {
         id: {
             type: DataTypes.UUID,
@@ -18,12 +17,12 @@ categorie.init(
             autoIncrement: true,
             defaultValue: DataTypes.UUIDV4,
         },
-        title: {
-            type: DataTypes.STRING,
+        postId: {
+            type: DataTypes.UUID,
             allowNull: false,
         },
-        content: {
-            type: DataTypes.STRING,
+        categorieId: {
+            type: DataTypes.UUID,
             allowNull: false,
         },
         createdAt: {
@@ -33,9 +32,7 @@ categorie.init(
             type: DataTypes.DATE,
         },
     },
-    { sequelize, tableName: 'categories' },
+    { sequelize, timestamps: false, tableName: 'tag_categories' },
 )
 
-
-
-export default categorie
+export default tag_categorie

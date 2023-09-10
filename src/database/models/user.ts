@@ -1,5 +1,6 @@
 import { Model, InferAttributes, InferCreationAttributes, CreationOptional, DataTypes } from 'sequelize'
 import { sequelize } from '../connection'
+import post from './post'
 
 export class user extends Model<InferAttributes<user>, InferCreationAttributes<user>> {
     declare id?: CreationOptional<string>
@@ -65,5 +66,18 @@ user.init(
     },
     { sequelize, tableName: 'users' },
 )
+
+// one-to-many associations(user to post)
+user.hasMany(post, {
+    foreignKey: 'authorId',
+    sourceKey: 'id',
+    as: 'posts',
+})
+
+// belongsTo associations(user to post)
+post.belongsTo(user, {
+    foreignKey: 'authorId',
+    as: 'users',
+})
 
 export default user

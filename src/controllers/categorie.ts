@@ -24,10 +24,10 @@ export const create = async (req: Request, res: Response) => {
             title: req.body.title,
             content: req.body.content,
         }
-        await categorie.create(categories)
+        const results = await categorie.create(categories)
         return res.status(201).send({
             message: 'Categorie added successfully!',
-            results: categories,
+            results: results,
         })
     } catch (error: any) {
         res.status(500).send({

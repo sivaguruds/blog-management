@@ -6,6 +6,7 @@ import bcrypt from 'bcrypt'
 // import { v4 as uuidv4 } from 'uuid'
 import dotenv from 'dotenv'
 import user from '../database/models/user'
+import { RegisterSucessEmail } from '../email'
 
 dotenv.config()
 
@@ -22,11 +23,15 @@ export const signUp = async (req: Request, res: Response) => {
             gender: req.body.gender,
             isVerify: false,
         }
-        user.create(users)
-        return res.status(201).send({
-            message: 'user added successfully!',
-            results: users,
-        })
+        const results = await user.create(users)
+        console.log(results)
+        if (results) {
+            RegisterSucessEmail(results.email, results.firstName)
+            return res.status(201).send({
+                message: 'user added successfully!',
+                results: results,
+            })
+        }
     } catch (error: any) {
         res.status(500).send({
             message: error.message || 'Some error occurred while creating the Tutorial.',
