@@ -9,6 +9,7 @@ import authRouter from './routes/auth'
 import categorieRouter from './routes/categorie'
 import tagRouter from './routes/tag'
 import postRouter from './routes/post'
+import uploadRoute from './routes/upload'
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
@@ -20,5 +21,6 @@ app.use(authRouter)
 app.use(categorieRouter)
 app.use(tagRouter)
 app.use(postRouter)
+app.use(uploadRoute)
 
 export default app
